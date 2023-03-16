@@ -56,6 +56,15 @@ public class ComplexStreamPractice {
 			System.out.println(charCountMap);
 
 		}
+		{
+//			An example to Get the sum of square numbers who is betwwen 3 to 10 and is a even number
+			List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+			int sum = nums.stream()
+			              .filter(n -> n > 3 && n <= 10 && n % 2 == 0)
+			              .map(n -> n * n)
+			              .reduce(0, Integer::sum);
+			System.out.println("Sum of squares of even numbers between 3 and 10: " + sum);
+		}
 
 	}
 
