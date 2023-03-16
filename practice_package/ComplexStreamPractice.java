@@ -62,7 +62,7 @@ public class ComplexStreamPractice {
 			int sum = nums.stream()
 			              .filter(n -> n > 3 && n <= 10 && n % 2 == 0)
 			              .map(n -> n * n)
-			              .reduce(0, Integer::sum);
+			              .reduce(0, Integer::sum); //  .reduce((a,b)->a+b);
 			System.out.println("Sum of squares of even numbers between 3 and 10: " + sum);
 		}
 
