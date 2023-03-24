@@ -128,6 +128,7 @@ public class ComplexStreamPractice {
         	scanner.close();
 		}
 		{
+			//sorting based on integer
 			List<Integer> listOfInteger = Arrays.asList(2, 4, 6, 8, 10,87,90,67,86);
 			List<Integer> sortByNum = listOfInteger.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
 			System.out.println(sortByNum);
