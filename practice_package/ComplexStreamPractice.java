@@ -65,6 +65,74 @@ public class ComplexStreamPractice {
 			              .reduce(0, Integer::sum); //  .reduce((a,b)->a+b);
 			System.out.println("Sum of squares of even numbers between 3 and 10: " + sum);
 		}
+		{
+			int[] arr={-2, 1, -3, 4, -1, 2, 1, -5, 4};
+			int maxSum = arr[0];
+		    int maxSumEndingHere = arr[0];
+
+		    for (int i = 1; i < arr.length; i++) {
+		        maxSumEndingHere = Math.max(arr[i], maxSumEndingHere + arr[i]);
+		        maxSum = Math.max(maxSum, maxSumEndingHere);
+		    }
+		    System.out.println(maxSum);
+		}
+		{
+//			Here is an example of integer value in which it give the max,min,avg,sum and secondLargest value in the entire list of integer
+			List<Integer> listOfInteger = Arrays.asList(2, 4, 6, 8, 10,87,90,67,86);
+			 int maxNum = listOfInteger.stream().mapToInt(Integer::intValue).max().orElseThrow();
+			 int minNum = listOfInteger.stream().mapToInt(Integer::intValue).min().orElseThrow();
+			 int sumNum = listOfInteger.stream().reduce(0, Integer::sum);
+			 double avgNum = listOfInteger.stream().mapToInt(Integer::intValue).average().orElseThrow();
+			 int secondLargest =listOfInteger.stream()
+                     .sorted(Comparator.reverseOrder())
+                     .distinct()
+                     .skip(1)
+                     .findFirst()
+                     .orElse(Integer.MIN_VALUE);
+			 System.out.println("The maximum value is "+maxNum+"\n"+"The minimum value is "+minNum 
+					 +"\n"+"The Sum of List is "+sumNum
+					 +"\n"+"The Second Largest number is "+secondLargest
+					 +"\n"+"The Average number of the list is  "+avgNum);
+		}
+		{
+//			Here is the example of a program having scanner class and a hashmap for adding and deleting an item in a flow
+			Scanner scanner=new Scanner(System.in);
+			Map<String,Double> entity=new HashMap<String, Double>();
+			entity.put("a", 34.00);
+			entity.put("ab", 32.00);
+			entity.put("abc", 33.00);			
+			while(true) {
+				System.out.println("Enter the Value \n1->add item \n2->delete item \n3->view item \n4->exit the shop");
+				   Integer enteringValue=scanner.nextInt();
+				if(enteringValue == 1) {	
+					System.out.println("Enter the item");
+					String item=scanner.next();
+					System.out.println("Enter the price");
+					Double price=scanner.nextDouble();
+					entity.put(item, price);
+				}
+				else if(enteringValue == 2) {
+					System.out.println("Enter the item name to be deleted");
+					String itemName=scanner.next();
+					entity.remove(itemName);
+					System.out.println("Successfully deleted the item");
+				}
+                else if(enteringValue==3) {
+					System.out.println(entity);
+				}
+                else {
+                	System.out.println("You are Exiting !!!!");
+                	break;
+                }
+			}
+        	scanner.close();
+		}
+		{
+			List<Integer> listOfInteger = Arrays.asList(2, 4, 6, 8, 10,87,90,67,86);
+			List<Integer> sortByNum = listOfInteger.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+			System.out.println(sortByNum);
+			
+		}
 
 	}
 
